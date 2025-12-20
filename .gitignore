@@ -1,0 +1,7 @@
+.venv/
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+backend/__pycache__/
+*.env
+.vscode/

@@ -1,0 +1,36 @@
+fastapi==0.109.0
+uvicorn==0.27.0
+sqlalchemy==2.0.25
+pydantic==2.6.0
+scikit-learn==1.4.0
+textblob==0.17.1
+pandas==2.2.0
+python-multipart==0.0.9
+numpy==1.26.3
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+nltk==3.8.1
+httpx==0.27.0
+email-validator==2.1.0.post1
+python-dotenv==1.0.0
+
+# Authentication Enhancements
+pyotp==2.9.0
+qrcode[pil]==7.4.2
+authlib==1.3.0
+
+# AI Agent Dependencies
+agno>=2.2.10
+yfinance
+groq
+requests-cache>=1.1.0
+
+# News Hub Dependencies
+newsapi-python>=0.2.7
+feedparser>=6.0.10
+python-dateutil>=2.8.2
+
+# Angel One SmartAPI
+smartapi-python
+logzero  # Required by smartapi-python
+websocket-client  # Required by smartapi-python

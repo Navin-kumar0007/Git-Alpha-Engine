@@ -1,0 +1,852 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================
+   CSS VARIABLES - VIBRANT PALETTE
+=========================== */
+
+:root {
+  /* ===========================
+     VIBRANT COLOR SCALES
+  =========================== */
+
+  /* Cyan - Primary Accent */
+  --color-cyan-50: #ecfeff;
+  --color-cyan-100: #cffafe;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+  --color-cyan-700: #0e7490;
+  --color-cyan-800: #155e75;
+  --color-cyan-900: #164e63;
+  --color-cyan: #06b6d4;
+  --color-cyan-light: #22d3ee;
+  --color-cyan-dark: #0891b2;
+  --color-cyan-glow: rgba(6, 182, 212, 0.6);
+
+  /* Purple - Brand Primary */
+  --color-purple-50: #faf5ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+  --color-purple-800: #6b21a8;
+  --color-purple-900: #581c87;
+  --color-purple: #8b5cf6;
+  --color-purple-light: #a78bfa;
+  --color-purple-dark: #7c3aed;
+  --color-purple-glow: rgba(139, 92, 246, 0.6);
+
+  /* Gold - Premium Accent */
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #fcd34d;
+  --color-gold-400: #fbb24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
+  --color-gold-700: #b45309;
+  --color-gold-800: #92400e;
+  --color-gold-900: #78350f;
+  --color-gold: #f59e0b;
+  --color-gold-light: #fbbf24;
+  --color-gold-dark: #d97706;
+  --color-gold-glow: rgba(245, 158, 11, 0.6);
+
+  /* Emerald - Success */
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065f46;
+  --color-emerald-900: #064e3b;
+  --color-emerald: #10b981;
+  --color-emerald-light: #34d399;
+  --color-emerald-dark: #059669;
+  --color-emerald-glow: rgba(16, 185, 129, 0.6);
+
+  /* Pink - Vibrant Accent */
+  --color-pink-50: #fdf2f8;
+  --color-pink-100: #fce7f3;
+  --color-pink-200: #fbcfe8;
+  --color-pink-300: #f9a8d4;
+  --color-pink-400: #f472b6;
+  --color-pink-500: #ec4899;
+  --color-pink-600: #db2777;
+  --color-pink-700: #be185d;
+  --color-pink-800: #9d174d;
+  --color-pink-900: #831843;
+  --color-pink: #ec4899;
+  --color-pink-light: #f472b6;
+  --color-pink-dark: #db2777;
+  --color-pink-glow: rgba(236, 72, 153, 0.6);
+
+  /* Orange - Energy */
+  --color-orange-50: #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange: #fb923c;
+  --color-orange-light: #fdba74;
+  --color-orange-dark: #ea580c;
+  --color-orange-glow: rgba(251, 146, 60, 0.6);
+
+  /* Blue - Info */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue: #3b82f6;
+  --color-blue-light: #60a5fa;
+  --color-blue-dark: #2563eb;
+  --color-blue-glow: rgba(59, 130, 246, 0.6);
+
+  /* Rose - Alert */
+  --color-rose-50: #fff1f2;
+  --color-rose-100: #ffe4e6;
+  --color-rose-200: #fecdd3;
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+  --color-rose-800: #9f1239;
+  --color-rose-900: #881337;
+  --color-rose: #f43f5e;
+  --color-rose-light: #fb7185;
+  --color-rose-dark: #e11d48;
+  --color-rose-glow: rgba(244, 63, 94, 0.6);
+
+  /* ===========================
+     MARKET COLORS - ENHANCED
+  =========================== */
+
+  --color-gain: #10b981;
+  --color-gain-light: #34d399;
+  --color-gain-dark: #059669;
+  --color-gain-glow: rgba(16, 185, 129, 0.5);
+  --color-gain-intense: rgba(16, 185, 129, 0.8);
+
+  --color-loss: #ef4444;
+  --color-loss-light: #f87171;
+  --color-loss-dark: #dc2626;
+  --color-loss-glow: rgba(239, 68, 68, 0.5);
+  --color-loss-intense: rgba(239, 68, 68, 0.8);
+
+  --color-neutral: #6b7280;
+  --color-neutral-light: #9ca3af;
+  --color-neutral-dark: #4b5563;
+
+  /* ===========================
+     SEMANTIC COLORS
+  =========================== */
+
+  --color-primary: var(--color-purple);
+  --color-primary-light: var(--color-purple-light);
+  --color-primary-dark: var(--color-purple-dark);
+  --color-secondary: var(--color-cyan);
+  --color-accent: var(--color-gold);
+  --color-success: var(--color-emerald);
+  --color-error: var(--color-rose);
+  --color-warning: var(--color-gold);
+  --color-info: var(--color-blue);
+
+  /* ===========================
+     BACKGROUND COLORS - Modern Dark Slate Blue
+  =========================== */
+
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-bg-card: rgba(30, 41, 59, 0.6);
+  --color-bg-hover: rgba(139, 92, 246, 0.1);
+  --color-bg-active: rgba(139, 92, 246, 0.2);
+  --color-bg-overlay: rgba(15, 23, 42, 0.95);
+
+  /* ===========================
+     TEXT COLORS
+  =========================== */
+
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-disabled: #475569;
+
+  /* ===========================
+     GLASS EFFECTS - ENHANCED
+  =========================== */
+
+  --glass-bg: rgba(30, 41, 59, 0.5);
+  --glass-bg-light: rgba(30, 41, 59, 0.3);
+  --glass-bg-strong: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(139, 92, 246, 0.2);
+  --glass-border-light: rgba(139, 92, 246, 0.1);
+  --glass-border-strong: rgba(139, 92, 246, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.5);
+
+  /* ===========================
+     ENHANCED GRADIENTS
+  =========================== */
+
+  --gradient-primary: linear-gradient(135deg, var(--color-purple) 0%, var(--color-cyan) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-gold) 0%, var(--color-emerald) 100%);
+  --gradient-tertiary: linear-gradient(135deg, var(--color-pink) 0%, var(--color-orange) 100%);
+  --gradient-cosmic: linear-gradient(135deg,
+      #0f172a 0%,
+      #1e293b 25%,
+      #334155 50%,
+      #1e293b 75%,
+      #0f172a 100%);
+  --gradient-gain: linear-gradient(135deg, var(--color-gain) 0%, var(--color-gain-light) 100%);
+  --gradient-loss: linear-gradient(135deg, var(--color-loss) 0%, var(--color-loss-light) 100%);
+  --gradient-vibrant: linear-gradient(135deg,
+      var(--color-cyan) 0%,
+      var(--color-purple) 25%,
+      var(--color-gold) 50%,
+      var(--color-emerald) 75%,
+      var(--color-cyan) 100%);
+  --gradient-rainbow: linear-gradient(135deg,
+      var(--color-purple) 0%,
+      var(--color-pink) 16%,
+      var(--color-rose) 32%,
+      var(--color-orange) 48%,
+      var(--color-gold) 64%,
+      var(--color-emerald) 80%,
+      var(--color-cyan) 100%);
+  --gradient-holographic: linear-gradient(135deg,
+      #667eea 0%,
+      #764ba2 25%,
+      #f093fb 50%,
+      #4facfe 75%,
+      #00f2fe 100%);
+
+  /* ===========================
+     SHADOWS & GLOWS - MULTI-LAYER
+  =========================== */
+
+  /* Standard Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* Glow Effects - Subtle */
+  --glow-subtle: 0 0 10px;
+  --glow-medium: 0 0 20px;
+  --glow-strong: 0 0 40px;
+  --glow-intense: 0 0 60px;
+
+  /* Color-Specific Glows */
+  --shadow-glow: 0 0 30px var(--color-purple-glow);
+  --shadow-glow-cyan: 0 0 30px var(--color-cyan-glow);
+  --shadow-glow-gold: 0 0 30px var(--color-gold-glow);
+  --shadow-glow-emerald: 0 0 30px var(--color-emerald-glow);
+  --shadow-glow-pink: 0 0 30px var(--color-pink-glow);
+  --shadow-glow-orange: 0 0 30px var(--color-orange-glow);
+  --shadow-glow-blue: 0 0 30px var(--color-blue-glow);
+  --shadow-glow-gain: 0 0 20px var(--color-gain-glow);
+  --shadow-glow-loss: 0 0 20px var(--color-loss-glow);
+
+  /* Intense Glows for Emphasis */
+  --shadow-glow-intense: 0 0 60px var(--color-purple-glow), 0 0 30px var(--color-purple-glow);
+  --shadow-glow-gain-intense: 0 0 40px var(--color-gain-intense), 0 0 20px var(--color-gain-glow);
+  --shadow-glow-loss-intense: 0 0 40px var(--color-loss-intense), 0 0 20px var(--color-loss-glow);
+
+  /* ===========================
+     BORDER RADIUS
+  =========================== */
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+
+  /* ===========================
+     TRANSITIONS
+  =========================== */
+
+  --transition-base: 0.3s ease-in-out;
+  --transition-fast: 0.15s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+  --transition-slowest: 1s ease-in-out;
+
+  /* ===========================
+     MARKET-SPECIFIC GRADIENTS
+  =========================== */
+
+  --gradient-india: linear-gradient(135deg, #ff9933 0%, #ffffff 50%, #138808 100%);
+  --gradient-usa: linear-gradient(135deg, #b22234 0%, #ffffff 50%, #3c3b6e 100%);
+  --gradient-uk: linear-gradient(135deg, #012169 0%, #ffffff 50%, #c8102e 100%);
+  --gradient-japan: linear-gradient(135deg, #ffffff 0%, #bc002d 100%);
+  --gradient-singapore: linear-gradient(135deg, #ed2939 0%, #ffffff 100%);
+
+  /* Market Glow Colors */
+  --glow-india: rgba(255, 153, 51, 0.5);
+  --glow-usa: rgba(178, 34, 52, 0.5);
+  --glow-uk: rgba(1, 33, 105, 0.5);
+  --glow-japan: rgba(188, 0, 45, 0.5);
+  --glow-singapore: rgba(237, 41, 57, 0.5);
+}
+
+/* ===========================
+   LIGHT THEME VARIABLES
+=========================== */
+
+[data-theme="light"],
+.light-theme {
+  /* Background Colors - Light Theme */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-bg-tertiary: #f1f5f9;
+  --color-bg-card: rgba(248, 250, 252, 0.8);
+  --color-bg-hover: rgba(139, 92, 246, 0.05);
+  --color-bg-active: rgba(139, 92, 246, 0.1);
+  --color-bg-overlay: rgba(255, 255, 255, 0.95);
+
+  /* Text Colors - Light Theme */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-tertiary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-text-disabled: #cbd5e1;
+
+  /* Glass Effects - Light Theme */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-light: rgba(255, 255, 255, 0.5);
+  --glass-bg-strong: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(139, 92, 246, 0.2);
+  --glass-border-light: rgba(139, 92, 246, 0.1);
+  --glass-border-strong: rgba(139, 92, 246, 0.3);
+  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.1);
+
+  /* Shadows - Light Theme (softer) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+}
+
+/* Light Theme Body Background */
+body.light-theme {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #f1f5f9 100%);
+}
+
+body.light-theme::before {
+  opacity: 0.3;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 25%, #e0f2fe 50%, #f8fafc 75%, #ffffff 100%);
+}
+
+body.light-theme::after {
+  opacity: 0.15;
+}
+
+/* Light Theme Glass Card Adjustments */
+body.light-theme .glass-card {
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+body.light-theme .glass-card:hover {
+  background: var(--glass-bg-strong);
+  border-color: var(--glass-border-strong);
+  box-shadow: 0 12px 40px 0 rgba(15, 23, 42, 0.15), var(--shadow-glow);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cosmic Background Animation */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-cosmic);
+  opacity: 0.5;
+  z-index: -2;
+  animation: cosmicPulse 20s ease-in-out infinite;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  z-index: -1;
+  animation: cosmicRotate 30s linear infinite;
+}
+
+@keyframes cosmicPulse {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes cosmicRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===========================
+   GLASSMORPHISM
+=========================== */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  @apply glass rounded-2xl p-6;
+  transition: all var(--transition-base);
+}
+
+.glass-card:hover {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(15, 23, 42, 0.6), var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+/* Gradient Cards */
+.card-gradient-primary {
+  @apply rounded-2xl p-6;
+  background: var(--gradient-primary);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transition: all var(--transition-base);
+}
+
+.card-gradient-primary:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-glow-intense);
+  transform: translateY(-2px);
+}
+
+.card-gradient-secondary {
+  @apply rounded-2xl p-6;
+  background: var(--gradient-secondary);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-cyan);
+  transition: all var(--transition-base);
+}
+
+.card-gradient-secondary:hover {
+  box-shadow: var(--shadow-xl), var(--shadow-glow-gold);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.btn {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 inline-flex items-center gap-2;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--gradient-secondary);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary:hover {
+  box-shadow: var(--shadow-lg), var(--shadow-glow-gold);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   UTILITY CLASSES
+=========================== */
+
+/* Hover Glows */
+.hover-glow-cyan:hover {
+  box-shadow: var(--shadow-glow-cyan);
+}
+
+.hover-glow-purple:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.hover-glow-gold:hover {
+  box-shadow: var(--shadow-glow-gold);
+}
+
+.hover-glow-emerald:hover {
+  box-shadow: var(--shadow-glow-emerald);
+}
+
+.hover-glow-pink:hover {
+  box-shadow: var(--shadow-glow-pink);
+}
+
+.hover-glow-orange:hover {
+  box-shadow: var(--shadow-glow-orange);
+}
+
+.hover-glow-blue:hover {
+  box-shadow: var(--shadow-glow-blue);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Hover Lift */
+.hover-lift {
+  transition: all var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Gradient Text */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gain {
+  background: var(--gradient-gain);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-loss {
+  background: var(--gradient-loss);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text {
+  background: var(--gradient-vibrant);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Market Text Colors */
+.text-gain {
+  color: var(--color-gain);
+}
+
+.text-loss {
+  color: var(--color-loss);
+}
+
+/* Card Borders */
+.card-gain {
+  border-left: 4px solid var(--color-gain) !important;
+}
+
+.card-loss {
+  border-left: 4px solid var(--color-loss) !important;
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--color-purple-glow);
+  }
+
+  50% {
+    box-shadow: 0 0 40px var(--color-purple-glow), 0 0 60px var(--color-purple-glow);
+  }
+}
+
+@keyframes shimmerFlow {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes neonBorder {
+
+  0%,
+  100% {
+    border-color: var(--color-purple);
+    box-shadow: 0 0 10px var(--color-purple-glow);
+  }
+
+  25% {
+    border-color: var(--color-cyan);
+    box-shadow: 0 0 10px var(--color-cyan-glow);
+  }
+
+  50% {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 10px var(--color-gold-glow);
+  }
+
+  75% {
+    border-color: var(--color-emerald);
+    box-shadow: 0 0 10px var(--color-emerald-glow);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-shimmer-flow {
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(139, 92, 246, 0.3) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmerFlow 2s linear infinite;
+}
+
+.animate-neon-border {
+  animation: neonBorder 4s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.2s ease-out;
+}
+
+/* ===========================
+   LOADING SKELETON
+=========================== */
+
+.skeleton {
+  @apply animate-shimmer-flow bg-slate-800 rounded;
+}
+
+/* ===========================
+   TOAST NOTIFICATIONS
+=========================== */
+
+.toast-success {
+  border-left: 4px solid var(--color-success);
+}
+
+.toast-error {
+  border-left: 4px solid var(--color-error);
+}
+
+.toast-warning {
+  border-left: 4px solid var(--color-warning);
+}
+
+/* ===============================
+   MARKET BADGES & INDICATORS
+=============================== */
+
+.market-badge {
+  @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold;
+  border: 2px solid transparent;
+  transition: all var(--transition-base);
+}
+
+.market-badge-india {
+  background: var(--gradient-india);
+  color: var(--color-text-primary);
+}
+
+.market-badge-india:hover {
+  box-shadow: 0 0 20px var(--glow-india);
+  transform: scale(1.05);
+}
+
+.market-badge-usa {
+  background: var(--gradient-usa);
+  color: var(--color-text-primary);
+}
+
+.market-badge-usa:hover {
+  box-shadow: 0 0 20px var(--glow-usa);
+  transform: scale(1.05);
+}
+
+.market-badge-uk {
+  background: var(--gradient-uk);
+  color: var(--color-text-primary);
+}
+
+.market-badge-uk:hover {
+  box-shadow: 0 0 20px var(--glow-uk);
+  transform: scale(1.05);
+}
+
+.market-badge-japan {
+  background: var(--gradient-japan);
+  color: var(--color-text-primary);
+}
+
+.market-badge-japan:hover {
+  box-shadow: 0 0 20px var(--glow-japan);
+  transform: scale(1.05);
+}
+
+.market-badge-singapore {
+  background: var(--gradient-singapore);
+  color: var(--color-text-primary);
+}
+
+.market-badge-singapore:hover {
+  box-shadow: 0 0 20px var(--glow-singapore);
+  transform: scale(1.05);
+}
+
+/* Market Indicator Dots */
+.market-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.market-indicator-positive {
+  background: var(--color-gain);
+  box-shadow: 0 0 10px var(--color-gain-glow);
+}
+
+.market-indicator-negative {
+  background: var(--color-loss);
+  box-shadow: 0 0 10px var(--color-loss-glow);
+}
+
+.market-indicator-neutral {
+  background: var(--color-neutral);
+  box-shadow: 0 0 10px rgba(107, 114, 128, 0.5);
+}
