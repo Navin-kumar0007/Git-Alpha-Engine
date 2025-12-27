@@ -57,12 +57,14 @@ async def start_connection(
         Success message with status
     """
     try:
-        angel_one_service.start(tokens=request.tokens)
+        # Convert Pydantic models to dictionaries for JSON serialization
+        tokens_dict = [token.dict() for token in request.tokens]
+        angel_one_service.start(tokens=tokens_dict)
         
         return {
             "success": True,
             "message": "Angel One WebSocket started",
-            "subscribed_tokens": request.tokens
+            "subscribed_tokens": tokens_dict
         }
     except Exception as e:
         raise HTTPException(
@@ -111,12 +113,14 @@ async def subscribe_tokens(
                 detail="Angel One service is not running. Start it first."
             )
         
-        angel_one_service.subscribe(request.tokens, request.mode)
+        # Convert Pydantic models to dictionaries for JSON serialization
+        tokens_dict = [token.dict() for token in request.tokens]
+        angel_one_service.subscribe(tokens_dict, request.mode)
         
         return {
             "success": True,
             "message": "Subscribed to tokens",
-            "tokens": request.tokens
+            "tokens": tokens_dict
         }
     except HTTPException:
         raise
@@ -149,12 +153,14 @@ async def unsubscribe_tokens(
                 detail="Angel One service is not running"
             )
         
-        angel_one_service.unsubscribe(request.tokens, request.mode)
+        # Convert Pydantic models to dictionaries for JSON serialization
+        tokens_dict = [token.dict() for token in request.tokens]
+        angel_one_service.unsubscribe(tokens_dict, request.mode)
         
         return {
             "success": True,
             "message": "Unsubscribed from tokens",
-            "tokens": request.tokens
+            "tokens": tokens_dict
         }
     except HTTPException:
         raise

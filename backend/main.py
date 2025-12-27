@@ -61,7 +61,36 @@ app.include_router(angel_one_router)
 @app.on_event("startup")
 async def startup_event():
     """Initialize services on startup"""
+    from app.services.angel_one_service import angel_one_service
+    
+    # Register broadcast callback
     setup_angel_one_broadcast()
-    print("Angel One broadcast callback registered")
+    print("✓ Angel One broadcast callback registered")
+    
+    # Check if Angel One credentials are configured
+    angel_enabled = all([
+        os.getenv("ANGEL_API_KEY"),
+        os.getenv("ANGEL_CLIENT_ID"),
+        os.getenv("ANGEL_PASSWORD"),
+        os.getenv("ANGEL_TOTP_KEY")
+    ])
+    
+    if angel_enabled:
+        # Auto-start with default tokens (NIFTY & BANKNIFTY)
+        default_tokens = [
+            {"exchangeType": 1, "tokens": ["26000", "26009"]}  # NIFTY 50, BANK NIFTY
+        ]
+        
+        try:
+            angel_one_service.start(tokens=default_tokens)
+            print("✓ Angel One service auto-started with NIFTY & BANKNIFTY")
+            print("  You can subscribe to more tokens via /api/angel-one/subscribe")
+        except Exception as e:
+            print(f"⚠ Failed to auto-start Angel One service: {e}")
+            print("  Service can still be started manually via /api/angel-one/start")
+    else:
+        print("ℹ Angel One credentials not configured - service disabled")
+        print("  Add ANGEL_* variables to .env to enable live market data")
+
 
 

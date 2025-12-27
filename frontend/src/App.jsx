@@ -58,6 +58,7 @@ import { Card } from './ui/card';
 import Pill from './ui/Pill';
 import Tag from './ui/Tag';
 import ProfilePanel from './components/ProfilePanel';
+import LiveMarketsDashboard from './components/LiveMarketsDashboard';
 import PreferencesDialog from './components/PreferencesDialog';
 
 
@@ -842,7 +843,7 @@ const App = () => {
                 <div>
                   <div className="text-xs text-slate-400">AI Market Engine</div>
                   <div className="text-sm font-semibold tracking-tight">
-                    Git Alpha
+                    Alpha Track
                   </div>
                 </div>
               )}
@@ -904,6 +905,18 @@ const App = () => {
               >
                 <Globe size={14} />
                 {!isCollapsed && <span>Markets</span>}
+              </button>
+
+              <button
+                onClick={() => setActiveTab("LiveMarkets")}
+                className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg transition-all ${activeTab === "LiveMarkets"
+                  ? "bg-[image:var(--gradient-primary)] text-white shadow-[var(--shadow-glow)]"
+                  : "hover:bg-[var(--color-emerald)]/10 text-slate-300 hover:text-[var(--color-emerald-light)]"
+                  }`}
+                title="Live Markets"
+              >
+                <Radio size={14} />
+                {!isCollapsed && <span>Live Markets</span>}
               </button>
 
               <button
@@ -1012,7 +1025,10 @@ const App = () => {
             <MarketDashboard />
           )}
 
-
+          {/* Live Markets Tab */}
+          {activeTab === "LiveMarkets" && (
+            <LiveMarketsDashboard />
+          )}
 
           {/* Charts Tab */}
           {activeTab === "Charts" && (

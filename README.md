@@ -49,7 +49,7 @@ From the `backend` folder:
 ```bash
 python -m venv venv
 venv\Scripts\activate  # On Windows
-# source venv/bin/activate  # On macOS / Linux
+# source venv/bin/activate  # On macOS / Lin 
 cd
 pip install -r requirements.txt
 

@@ -1,0 +1,2 @@
+[E 251226 00:01:59 smartWebSocketV2:260] Error occurred during unsubscribe: Object of type TokenSubscription is not JSON serializable
+[E 251226 00:02:33 smartWebSocketV2:260] Error occurred during unsubscribe: Object of type TokenSubscription is not JSON serializable
