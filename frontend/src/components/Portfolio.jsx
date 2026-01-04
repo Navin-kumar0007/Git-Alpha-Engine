@@ -10,9 +10,11 @@ import {
   BarChart3,
   RefreshCw,
   X,
+  Building2,
 } from 'lucide-react';
 import Chart from './Chart';
 import WealthCard from './WealthCard';
+import AngelOnePortfolioView from './AngelOnePortfolioView';
 import { useToast } from './Toast';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
@@ -25,10 +27,12 @@ const getAuthHeaders = () => {
 /**
  * Portfolio Page Component - 25% More Compact
  * Complete portfolio management with transactions and analytics
+ * Supports both manual portfolio and Angel One live sync
  */
 const Portfolio = ({ user }) => {
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [portfolioView, setPortfolioView] = useState('manual'); // 'manual' or 'angelone'
   const [showTransactionModal, setShowTransactionModal] = useState(false);
   const [transactionForm, setTransactionForm] = useState({
     asset_id: '',
@@ -125,11 +129,56 @@ const Portfolio = ({ user }) => {
 
   const isEmpty = !summary || summary.holdings.length === 0;
 
+  // If Angel One view is selected, show that component
+  if (portfolioView === 'angelone') {
+    return (
+      <div className="space-y-6 animate-fade-in">
+        {/* Toggle Buttons */}
+        <div className="flex items-center justify-between">
+          <div className="inline-flex bg-slate-800/50 rounded-lg p-1 gap-1">
+            <button
+              onClick={() => setPortfolioView('manual')}
+              className="px-4 py-2 rounded-md text-sm font-medium transition-all text-slate-300 hover:text-white"
+            >
+              <Wallet size={16} className="inline mr-2" />
+              Manual Portfolio
+            </button>
+            <button
+              onClick={() => setPortfolioView('angelone')}
+              className="px-4 py-2 rounded-md text-sm font-medium transition-all bg-indigo-600 text-white shadow-lg"
+            >
+              <Building2 size={16} className="inline mr-2" />
+              Angel One Portfolio
+            </button>
+          </div>
+        </div>
+
+        {/* Angel One Portfolio View */}
+        <AngelOnePortfolioView user={user} />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 animate-fade-in">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold gradient-text">Portfolio</h1>
+      {/* Toggle Buttons + Header */}
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div className="inline-flex bg-slate-800/50 rounded-lg p-1 gap-1">
+          <button
+            onClick={() => setPortfolioView('manual')}
+            className="px-4 py-2 rounded-md text-sm font-medium transition-all bg-indigo-600 text-white shadow-lg"
+          >
+            <Wallet size={16} className="inline mr-2" />
+            Manual Portfolio
+          </button>
+          <button
+            onClick={() => setPortfolioView('angelone')}
+            className="px-4 py-2 rounded-md text-sm font-medium transition-all text-slate-300 hover:text-white"
+          >
+            <Building2 size={16} className="inline mr-2" />
+            Angel One Portfolio
+          </button>
+        </div>
         <button
           onClick={() => setShowTransactionModal(true)}
           className="btn btn-primary"

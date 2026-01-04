@@ -24,6 +24,9 @@ from app.api import (
     angel_one_router,
 )
 from app.api.ai_agent import router as ai_agent_router
+from app.api.angel_portfolio import router as angel_portfolio_router
+from app.api.angel_historical import router as angel_historical_router
+from app.api.ml_training import router as ml_training_router
 from app.api.websocket import setup_angel_one_broadcast
 
 
@@ -56,6 +59,9 @@ app.include_router(markets_router)
 app.include_router(ai_agent_router)
 app.include_router(news_router)
 app.include_router(angel_one_router)
+app.include_router(angel_portfolio_router)
+app.include_router(angel_historical_router)
+app.include_router(ml_training_router)
 
 # Setup Angel One broadcast callback on startup
 @app.on_event("startup")

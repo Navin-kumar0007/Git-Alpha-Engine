@@ -95,10 +95,13 @@ class AngelOneService:
                 }
                 
                 # Call the async broadcast function
-                # We need to schedule it on the event loop
-                asyncio.create_task(self.frontend_broadcast_callback(message))
+                # Note: This runs in a WebSocket thread context, not FastAPI's event loop
+                # We'll need to handle this differently - for now, skip broadcasting
+                # TODO: Implement proper async WebSocket broadcasting
+                # asyncio.create_task(self.frontend_broadcast_callback(message))
             except Exception as e:
-                print(f"Error broadcasting to frontend: {e}")
+                # Silently ignore broadcast errors - not critical
+                pass
 
 # Global instance
 angel_one_service = AngelOneService()

@@ -44,7 +44,7 @@ import {
 import Portfolio from "./components/Portfolio";
 import AIAssistant from "./components/AIAssistant";
 import ColorShowcase from "./components/ColorShowcase";
-import ChartsView from "./components/ChartsView";
+import Charts from "./components/Charts";
 import MultiChartDashboard from "./components/charts/MultiChartDashboard";
 import MarketHeatmap from "./components/charts/MarketHeatmap";
 import { ToastContainer, useToast } from "./components/Toast";
@@ -1032,11 +1032,7 @@ const App = () => {
 
           {/* Charts Tab */}
           {activeTab === "Charts" && (
-            <ChartsView
-              assets={filteredAssets}
-              selectedAsset={selectedAsset}
-              onAssetSelect={(asset) => setSelectedAsset(asset)}
-            />
+            <Charts user={user} />
           )}
 
           {/* News Hub Tab */}

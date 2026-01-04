@@ -8,6 +8,7 @@ from sqlalchemy import (
     ForeignKey,
     Float,
     Boolean,
+    Index,
 )
 from sqlalchemy.orm import relationship
 
@@ -424,4 +425,110 @@ class MarketDataSnapshot(Base):
     # Timestamp
     exchange_timestamp = Column(DateTime, nullable=True)
     received_at = Column(DateTime, default=datetime.utcnow, index=True)
+
+
+# ========================================
+# Angel One - Portfolio Sync Models
+# ========================================
+
+class AngelOneHolding(Base):
+    """Cache of Angel One holdings (Demat holdings)"""
+    __tablename__ = "angel_one_holdings"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    
+    # Angel One data
+    trading_symbol = Column(String, nullable=False)
+    exchange = Column(String, nullable=False)
+    isin = Column(String, nullable=True)
+    quantity = Column(Integer, nullable=False)
+    avg_price = Column(Float, nullable=False)
+    ltp = Column(Float, nullable=False)  # Last traded price
+    pnl = Column(Float, nullable=False)  # Profit/Loss
+    
+    # Metadata
+    synced_at = Column(DateTime, default=datetime.utcnow, index=True)
+    
+    # Relationship
+    user = relationship("User")
+
+
+class AngelOnePosition(Base):
+    """Cache of Angel One positions (Intraday/Delivery)"""
+    __tablename__ = "angel_one_positions"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    
+    # Position data
+    trading_symbol = Column(String, nullable=False)
+    exchange = Column(String, nullable=False)
+    product_type = Column(String, nullable=False)  # INTRADAY, DELIVERY, etc.
+    quantity = Column(Integer, nullable=False)
+    avg_price = Column(Float, nullable=False)
+    ltp = Column(Float, nullable=False)
+    pnl = Column(Float, nullable=False)
+    
+    # Metadata
+    synced_at = Column(DateTime, default=datetime.utcnow, index=True)
+    
+    # Relationship
+    user = relationship("User")
+
+
+class AngelOneFunds(Base):
+    """Cache of Angel One funds/margins"""
+    __tablename__ = "angel_one_funds"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True, nullable=False)
+    
+    # Fund data
+    available_cash = Column(Float, nullable=False, default=0.0)
+    used_margin = Column(Float, nullable=False, default=0.0)
+    available_margin = Column(Float, nullable=False, default=0.0)
+    
+    # Metadata
+    synced_at = Column(DateTime, default=datetime.utcnow, index=True)
+    
+    # Relationship
+    user = relationship("User")
+
+
+# ========================================
+# Angel One - Historical Data Models
+# ========================================
+
+class AngelOneCandle(Base):
+    """Historical OHLCV candle data from Angel One"""
+    __tablename__ = "angel_one_candles"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    
+    # Symbol info
+    symboltoken = Column(String, nullable=False, index=True)
+    exchange = Column(String, nullable=False)  # NSE, BSE, NFO
+    trading_symbol = Column(String, nullable=True)
+    
+    # Candle data (OHLCV)
+    timestamp = Column(DateTime, nullable=False, index=True)
+    open_price = Column(Float, nullable=False)
+    high = Column(Float, nullable=False)
+    low = Column(Float, nullable=False)
+    close = Column(Float, nullable=False)
+    volume = Column(Integer, nullable=False)
+    
+    # Metadata
+    interval = Column(String, nullable=False)  # ONE_MINUTE, FIVE_MINUTE, etc.
+    fetched_at = Column(DateTime, default=datetime.utcnow)
+    
+    # Relationship
+    user = relationship("User")
+    
+    # Composite index for fast lookups
+    __table_args__ = (
+        Index('ix_candles_lookup', 'symboltoken', 'interval', 'timestamp'),
+    )
 
